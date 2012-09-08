@@ -1,0 +1,25 @@
+The oscboard is a virtual lighting controller.
+
+It loads a yaml based configuration describing the layout of the
+control elements and what endpoints to connect them to.
+
+Configuration format:
+  title: <window title> (optional)
+  widget: <main widget>
+
+A widget is described by a mapping of the form:
+  type: <type of widget>
+  name: <label to display>  (control only)
+  osc: <url of endpoint>    (control only)
+  childs: <list of widgets> (container only)
+
+Currently supported widget types are containers (hbox,vbox) and
+control elements (hscale, vscale, colorsel).
+
+hscale and vscale will send one int between 0 and 255 to the given
+endpoint when they are changed.
+
+colorsel will send three ints between 0 and 255 to the given endpoint,
+representing rgb values.
+
+See sublab.board for a simple example.

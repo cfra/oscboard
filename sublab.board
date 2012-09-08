@@ -1,0 +1,30 @@
+title: sublab.org light control
+widget:
+  type: hbox
+  childs:
+  - type: vscale
+    name: Lounge / Buehne
+    osc: osc.udp://172.22.83.5:4243/dali/lamps/01/bright
+  - type: vscale
+    name: Lounge / Buero
+    osc: osc.udp://172.22.83.5:4243/dali/lamps/02/bright
+  - type: vscale
+    name: Lounge / Uhrenraum
+    osc: osc.udp://172.22.83.5:4243/dali/lamps/03/bright
+  - type: vscale
+    name: Lounge / Bar
+    osc: osc.udp://172.22.83.5:4243/dali/lamps/04/bright
+  - type: vbox
+    childs:
+    - type: colorsel
+      name: Moodlamp Main
+      osc: osc.udp://172.22.80.4:4243/moodpd/lamps/00/rgb
+    - type: colorsel
+      name: Moodlamp Small 0
+      osc: osc.udp://172.22.80.4:4243/moodpd/lamps/01/rgb
+    - type: colorsel
+      name: Moodlamp Small 1
+      osc: osc.udp://172.22.80.4:4243/moodpd/lamps/02/rgb
+    - type: colorsel
+      name: Moodlamp Small 2
+      osc: osc.udp://172.22.80.4:4243/moodpd/lamps/03/rgb
