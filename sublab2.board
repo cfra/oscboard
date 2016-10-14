@@ -1,0 +1,44 @@
+title: sublab.org light control
+widget:
+  type: hbox
+  childs:
+  - type: hbox
+    childs:
+    - type: vscale
+      name: Lounge / Buehne
+      osc: osc.udp://172.22.80.98:4223/lights/dali.lounge_buehne/value
+    - type: vscale
+      name: Lounge / Buero
+      osc: osc.udp://172.22.80.98:4223/lights/dali.lounge_buero/value
+    - type: vscale
+      name: Lounge / Uhrenraum
+      osc: osc.udp://172.22.80.98:4223/lights/dali.lounge_durchreiche/value
+    - type: vscale
+      name: Lounge / Bar
+      osc: osc.udp://172.22.80.98:4223/lights/dali.lounge_bar/value
+  - type: vscale
+    name: Flur
+    osc: osc.udp://172.22.80.98:4223/lights/dali.flur/value
+  - type: vscale
+    name: Hacklab
+    osc: osc.udp://172.22.80.98:4223/lights/dali.hacklab.*/value
+  - type: vscale
+    name: WC
+    osc: osc.udp://172.22.80.98:4223/lights/dali.flur.wc/value
+  - type: vscale
+    name: Werkstatt
+    osc: osc.udp://172.22.80.98:4223/lights/dali.werkstatt.doppel/value
+  - type: vbox
+    childs:
+    - type: colorsel
+      name: Lounge Midwest
+      osc: osc.udp://172.22.80.98:4223/dmx//dev/ttyS2/dmx.lounge_midwest/value
+    - type: colorsel
+      name: Lounge Buehne Links
+      osc: osc.udp://172.22.80.98:4223/dmx//dev/ttyS2/dmx.lounge_buehne_links/value
+    - type: colorsel
+      name: Lounge Traverse
+      osc: osc.udp://172.22.80.98:4223/dmx//dev/ttyS2/dmx.lounge_traverse/value
+    - type: colorsel
+      name: Lounge Decke
+      osc: osc.udp://172.22.80.98:4223/dmx//dev/ttyS2/dmx.lounge_decke/value
