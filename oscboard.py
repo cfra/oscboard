@@ -59,20 +59,20 @@ class OSCWindow(gtk.Window):
         gtk.main_quit()
 
     def widget_from_desc(self, widget):
+        re = True if 'expand' not in widget else widget['expand']
         if widget['type'] in ['hbox', 'vbox']:
             rw = gtk.HBox() if widget['type'] == 'hbox' else gtk.VBox()
             for desc in widget['childs']:
                 child, expand = self.widget_from_desc(desc)
                 if child is not None:
                     rw.pack_start(child, expand=expand)
-            return rw, True
+            return rw, re
 
         # not containers but actual controllers
         if widget['type'] == 'vscale':
             rw = gtk.VScale()
             rw.set_range(0,255)
             rw.set_inverted(True)
-            re = True
             label_cont = gtk.VBox
             label_start = False
             if 'osc' in widget:
@@ -81,14 +81,12 @@ class OSCWindow(gtk.Window):
             rw = gtk.HScale()
             rw.set_range(0,255)
             rw.set_value_pos(gtk.POS_RIGHT)
-            re = True
             label_cont = gtk.HBox
             label_start = True
             if 'osc' in widget:
                 rw.connect("value-changed", self.osc_value, widget['osc'])
         elif widget['type'] == 'colorsel':
             rw = gtk.HSV()
-            re = True
             label_cont = gtk.HBox
             label_start = True
             if 'osc' in widget:
@@ -96,6 +94,20 @@ class OSCWindow(gtk.Window):
         else:
             print >>sys.stderr, "Don't know about widget '%s'" % widget['type']
             return None, None
+
+        if 'label' in widget:
+            if widget['label'] == 'below':
+                label_cont = gtk.VBox
+                label_start = False
+            elif widget['label'] == 'above':
+                label_cont = gtk.VBox
+                label_start = True
+            elif widget['label'] == 'left':
+                label_cont = gtk.HBox
+                label_start = True
+            elif widget['label'] == 'right':
+                label_cont = gtk.HBox
+                label_start = True
 
         if 'name' in widget:
             container = label_cont()
